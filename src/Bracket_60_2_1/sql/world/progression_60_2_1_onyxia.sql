@@ -174,3 +174,7 @@ INSERT INTO spell_linked_spell (spell_trigger, spell_effect, TYPE, COMMENT) VALU
 (22905, 22906, 0, 'quelserrar');
 
 UPDATE `quest_template_addon` SET `SpecialFlags` = 0 WHERE `id` = 7509;
+
+DELETE FROM `creature_questender` WHERE `quest` = 4182;
+INSERT INTO `creature_questender` (`id`, `quest`) VALUES
+(9562, 4182);
