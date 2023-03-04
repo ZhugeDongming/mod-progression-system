@@ -178,3 +178,7 @@ UPDATE `quest_template_addon` SET `SpecialFlags` = 0 WHERE `id` = 7509;
 DELETE FROM `creature_queststarter` WHERE (`quest` = 4182) AND (`id` IN (9562));
 INSERT INTO `creature_queststarter` (`id`, `quest`) VALUES
 (9562, 4182);
+
+DELETE FROM `creature_questender` WHERE (`quest` = 4182) AND (`id` IN (9562));
+INSERT INTO `creature_questender` (`id`, `quest`) VALUES
+(9562, 4182);
