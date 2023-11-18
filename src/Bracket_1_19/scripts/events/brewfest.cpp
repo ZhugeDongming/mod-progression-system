@@ -246,6 +246,11 @@ public:
                     {
                         player->RewardQuest(quest, 0, nullptr, false, true);
                     }
+                    else
+                    {
+                        player->SendSystemMessage("Debug: Seasonal daily quest could not be rewarded.");
+                        LOG_ERROR("server.server", "Coren daily could not be rewarded. Player: {}", player->GetName());
+                    }
                 }
             });
         }
@@ -378,7 +383,9 @@ public:
             {
                 if (Player* player = itr->GetSource())
                 {
-                    if (player->getLevel() < 55)
+                    if (player->getLevel() < 55 && sConfigMgr->GetOption<bool>("ProgressionSystem.Bracket_1_19", false))
+                        _canTeleport = false;
+                    else if (player->getLevel() < 65 && sConfigMgr->GetOption<bool>("ProgressionSystem.Bracket_70_1_1", false))
                         _canTeleport = false;
                 }
             }
